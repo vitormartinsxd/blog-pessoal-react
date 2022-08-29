@@ -7,11 +7,11 @@ import { Box } from '@mui/material';
 function Home() {
     return (
         <>
-            <Grid container direction="row" justifyContent="center" alignItems="center" style={{ backgroundColor: "#2F4F4F" }}>
+            <Grid className='folha' container direction="row" justifyContent="center" alignItems="center" style={{ backgroundColor: "#212121" }}>
                 <Grid alignItems="center" item xs={6}>
                     <Box paddingX={20} >
-                        <Typography variant="h3" gutterBottom color="textPrimary" component="h3" align="center" style={{ color: "white", fontWeight: "bold" }}>Seja bem vindo(a)!</Typography>
-                        <Typography variant="h6" gutterBottom color="textPrimary" component="h6" align="center" style={{ color: "white", fontWeight: "bold" }}>Blog focado em futebol, <br></br> Digite aqui!</Typography>
+                        <Typography variant="h2" gutterBottom color="textPrimary" component="h2" align="center" style={{ color: "white", fontWeight: "bold" }}>Seja bem vindo(a)!</Typography>
+                        <Typography variant="h4" gutterBottom color="textPrimary" component="h4" align="center" style={{ color: "white", fontWeight: "bold" }}>Ao meu blog pessoal<br/>digite aqui.</Typography>
                     </Box>
                     <Box display="flex" justifyContent="center">
                         <Box marginRight={1}>
