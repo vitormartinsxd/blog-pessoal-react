@@ -17,27 +17,27 @@ function Navbar() {
                     </Box>
 
                     <Box display="flex" justifyContent="start">
-                        <Box mx={2} style={{ cursor: "pointer" }}>
+                        <Box mx={1} style={{ cursor: "pointer" }}>
                             <Typography className='title' variant="h6" color="inherit">
                                 Home
                             </Typography>
                         </Box>
-                        <Box mx={2} style={{ cursor: "pointer" }}>
+                        <Box mx={1} style={{ cursor: "pointer" }}>
                             <Typography className='title' variant="h6" color="inherit">
                                 Postagens
                             </Typography>
                         </Box>
-                        <Box mx={2} style={{ cursor: "pointer" }}>
+                        <Box mx={1} style={{ cursor: "pointer" }}>
                             <Typography className='title' variant="h6" color="inherit">
                                 Temas
                             </Typography>
                         </Box>
-                        <Box mx={2} style={{ cursor: "pointer" }}>
+                        <Box mx={1} style={{ cursor: "pointer" }}>
                             <Typography className='title' variant="h6" color="inherit">
                                 Cadastrar tema
                             </Typography>
                         </Box>
-                        <Box mx={2} style={{ cursor: "pointer" }}>
+                        <Box mx={1} style={{ cursor: "pointer" }}>
                             <Typography className='title' variant="h6" color="inherit" >
                                 Sair
                             </Typography>
