@@ -8,9 +8,9 @@ import './Navbar.css';
 function Navbar() {
     return (
         <>
-            <AppBar className='folha' position="static">
+            <AppBar position="static" style={{backgroundColor: '#778899'}}>
                 <Toolbar variant="dense">
-                    <Box style={{ cursor: "pointer" }} >
+                    <Box mx={2} style={{ cursor: "pointer" }} >
                         <Typography className='title' variant="h5" color="inherit">
                             BlogPessoal
                         </Typography>

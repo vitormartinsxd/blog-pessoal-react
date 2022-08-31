@@ -1,9 +1,9 @@
 .folha{
-    background: linear-gradient(36deg, #06033d 0%, #0b0b58 35% , #062e4b 100%);
-
+    background-color: black;
 }
 
 .title {
     font-weight: bold!important ;
+    color: black!important;
     
 }
