@@ -1,5 +1,18 @@
-.folha { 
-    background: linear-gradient(36deg, #8380c8 0%, #4e4eba 35% , #190224 100%)!important;
-    
+.box1{
+    background-color: #3F51B5;
+    height: 120px;
+}
 
+.box2{
+    background-color: #303F9F;
+    height: 60px;
+}
+
+.redes{
+    font-size: 60px !important;
+    color: white;
+}
+
+.textos{
+   color: white;
 }

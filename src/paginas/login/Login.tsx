@@ -1,43 +1,103 @@
-import React from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import { Grid, Typography, TextField, Button } from '@material-ui/core';
-import { Link } from 'react-router-dom';
-import './Login.css';
+import { Link, useNavigate } from 'react-router-dom';
 import { Box } from '@mui/material';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Avatar from '@material-ui/core/Avatar';
+import { makeStyles } from '@material-ui/core/styles';
+import useLocalStorage from 'react-use-localstorage';
+import { login } from '../../services/Service';
+import UserLogin from '../../models/UserLogin';
+import './Login.css';
 
 
 function Login() {
+    const useStyles = makeStyles((theme) => ({
+        avatar: {
+            margin: theme.spacing(1),
+            backgroundColor: theme.palette.secondary.main,
+          }
+        }));
 
+        
+        const classes = useStyles();
+       
+            let navigate = useNavigate();
+            const [token, setToken] = useLocalStorage('token');
+            const [userLogin, setUserLogin] = useState<UserLogin>(
+                {
+                    id: 0,
+                    nome: '',
+                    usuario: '',
+                    senha: '',
+                    foto: '',
+                    token: ''
+                    
+                }
+                )
+        
+                function updatedModel(e: ChangeEvent<HTMLInputElement>) {
+        
+                    setUserLogin({
+                        ...userLogin,
+                        [e.target.name]: e.target.value
+                    })
+                }
+        
+                    useEffect(()=>{
+                        if(token != ''){
+                            navigate('/home')
+                        }
+                    }, [token])
+        
+                async function onSubmit(e: ChangeEvent<HTMLFormElement>){
+                    e.preventDefault();
+                    try{
+                       await login (`/usuarios/logar`, userLogin, setToken)
+        
+                        alert('Usuário logado com sucesso!');
+                    }catch(error){
+                        alert('Dados do usuário inconsistentes. Erro ao logar!');
+                    }
+                }
+        
     return (
         <Grid container direction='row' justifyContent='center' alignItems='center' color='floralwhite'>
             <Grid  alignItems='center' xs={6}>
                 <Box className='box'  paddingX={20}>
-                    <form >
-                        <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center' style={{fontWeight: 'bold'}}>Bem-Vindo!</Typography>
-                        <TextField id='usuario' label='Usuário' variant='outlined' name='usuario' margin='normal' fullWidth />
-                        <TextField id='senha' label='Senha' variant='outlined' name='senha' margin='normal' type='password'fullWidth />
+                    <form onSubmit={onSubmit}>
+                    <div className='icon'>
+                    <Avatar className={classes.avatar}>
+                        
+                        <LockOutlinedIcon />
+                        
+                    </Avatar>
+                    </div>
+                        <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center' style={{fontWeight: 'bold'}}>Login</Typography>
+                        <TextField value={userLogin.usuario} onChange={(e:ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='usuario' label='Usuário' variant='outlined' name='usuario' margin='normal' fullWidth />
+                        <TextField value={userLogin.senha} onChange={(e:ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='senha' label='Senha' variant='outlined' name='senha' margin='normal' type='password'fullWidth />
+                        <Box marginTop={2} textAlign='center'>
+                                <Button className='btn' type='submit' variant='contained' color='primary' fullWidth>
+                                    Logar
+                                </Button>
+                        </Box>
+                    
                        
                     </form>
                     <Box display='flex' justifyContent='center' marginTop={2}>
                         <Box marginRight={1}>
                             <Typography variant='subtitle1' gutterBottom align='center'>Não tem uma conta?</Typography>
                         </Box>
-                            <Typography variant='subtitle1' gutterBottom align='center' style={{fontWeight: 'bold'}}>Cadastre-se</Typography>
+                        <Link to='/cadastrausuario'>
+                            <Typography variant='subtitle1' gutterBottom align='center' style={{fontWeight: 'bold'}}>Cadastre-se
+                            </Typography>
+                        </Link>    
                     </Box>
-                        <Box marginTop={2} textAlign='center'>
-                            <Link to='/home' className='text-decorator-none'>
-                                <Button className='btn' type='submit' variant='contained' color='primary' fullWidth>
-                                    Logar
-                                </Button>
-                            </Link>
-                        </Box>
+                        
                     
                 </Box>
             </Grid>
-            <Grid justifyContent='center' alignItems='center' xs={6} style={{
-                backgroundImage: `url(https://cdn.pixabay.com/photo/2016/11/14/05/21/children-1822688_960_720.jpg)`,
-                backgroundRepeat: 'no-repeat', width: '100vh', minHeight: '100vh', backgroundSize: 'cover', backgroundPosition: 'center'
-            }}>
-
+            <Grid className='imagem' xs={6}>
             </Grid>
         </Grid>
     );

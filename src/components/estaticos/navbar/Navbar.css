@@ -1,9 +1,8 @@
-.folha{
-    background-color: black;
+.cursor{
+    cursor: pointer;
+    color: white;
 }
 
-.title {
-    font-weight: bold!important ;
-    color: black!important;
-    
+.text-decorator-none{
+    text-decoration: none;
 }
