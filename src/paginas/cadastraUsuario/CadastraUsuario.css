@@ -5,6 +5,9 @@
     min-height: 100vh;
     background-size: cover;
     background-position: center;
+    border-radius: 450px !important;
+    border: 0px solid #212121;
+    box-shadow: 2px 3px 10px #212121;
 }
 
 .textos2{

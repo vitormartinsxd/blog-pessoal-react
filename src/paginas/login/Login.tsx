@@ -62,18 +62,16 @@ function Login() {
                 }
         
     return (
-        <Grid container direction='row' justifyContent='center' alignItems='center' color='floralwhite'>
-            <Grid  alignItems='center' xs={6}>
-                <Box className='box'  paddingX={20}>
+        <Grid className='box' container direction='row' justifyContent='center' alignItems='center' color='floralwhite'>
+            <Grid className='box' alignItems='center' xs={6}>
+                <Box   paddingX={20}>
                     <form onSubmit={onSubmit}>
                     <div className='icon'>
                     <Avatar className={classes.avatar}>
-                        
                         <LockOutlinedIcon />
-                        
                     </Avatar>
                     </div>
-                        <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center' style={{fontWeight: 'bold'}}>Login</Typography>
+                        <Typography variant='h4' gutterBottom color='textPrimary' component='h4' align='center' style={{fontWeight: 'bold'}}>Login</Typography>
                         <TextField value={userLogin.usuario} onChange={(e:ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='usuario' label='Usuário' variant='outlined' name='usuario' margin='normal' fullWidth />
                         <TextField value={userLogin.senha} onChange={(e:ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='senha' label='Senha' variant='outlined' name='senha' margin='normal' type='password'fullWidth />
                         <Box marginTop={2} textAlign='center'>

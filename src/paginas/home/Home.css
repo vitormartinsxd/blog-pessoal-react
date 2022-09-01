@@ -9,10 +9,30 @@
   
   .botao{
       border-color: white !important;
-      background-color: #3F51B5;
+      background-color: #3F51B5 !important;
       color: white !important;
+     
   }
+
+  .botao2{
+    border-color: white !important;
+    background-color: #3F51B5;
+    color: white !important;
+    
+}
   
   .postagens{
       background-color: white;
+  }
+  
+  .imagem3{
+    background-image: url(https://cdn.pixabay.com/photo/2017/06/26/19/53/team-2444978_960_720.jpg);
+    background-repeat: no-repeat;
+    width: 100vh;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    border-radius: 350px !important;
+    border: 0px solid #212121;
+    box-shadow: 2px 3px 10px #212121;
   }

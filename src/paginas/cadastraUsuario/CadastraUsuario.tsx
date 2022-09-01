@@ -74,9 +74,9 @@ function CadastraUsuario() {
         }
     }
     return (
-        <Grid container direction='row' justifyContent='center' alignItems='center'>
+        <Grid style={{background: 'silver'}} container direction='row' justifyContent='center' alignItems='center'>
             <Grid item xs={6} className='imagem2'></Grid>
-            <Grid item xs={6} alignItems='center'>
+            <Grid item xs={6} alignItems='center' >
                 <Box paddingX={10}>
                     <form onSubmit={onSubmit}>
                     <div className='icon'>
@@ -86,7 +86,7 @@ function CadastraUsuario() {
                         
                     </Avatar>
                     </div>
-                        <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center' className='textos2'>Cadastrar</Typography>
+                        <Typography variant='h4' gutterBottom color='textPrimary' component='h4' align='center' className='textos2'>Cadastrar-se</Typography>
                         <TextField value={user.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='nome' label='Nome' variant='outlined' name='nome' margin='normal' fullWidth />
                         <TextField value={user.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}id='usuario' label='Usuário' variant='outlined' name='usuario' margin='normal'fullWidth />
                         <TextField value={user.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}id='senha' label='Senha' variant='outlined' name='senha' margin='normal' type='password' fullWidth />
