@@ -1,0 +1,13 @@
+.text-decorator-none{
+    text-decoration: none;
+}
+
+.card {
+    background-color: #212121 !important;
+    color: white !important;
+    
+}
+
+.postagemAlt{
+    min-height: 57vh;
+}

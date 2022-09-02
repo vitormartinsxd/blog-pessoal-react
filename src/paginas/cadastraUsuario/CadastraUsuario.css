@@ -1,24 +1,23 @@
-.imagem2{
-    background-image: url(https://cdn.pixabay.com/photo/2016/11/14/05/21/children-1822688_960_720.jpg);
-    background-repeat: no-repeat;
-    width: 100vh;
-    min-height: 100vh;
-    background-size: cover;
-    background-position: center;
-    border-radius: 450px !important;
-    border: 0px solid #212121;
-    box-shadow: 2px 3px 10px #212121;
+.imagem2 {
+  background-image: url(https://cdn.pixabay.com/photo/2020/11/17/13/22/naruto-5752318_960_720.png);
+  background-repeat: no-repeat;
+  width: 100vh;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  border-radius: 450px !important;
+  border: 0px solid #212121;
+  box-shadow: 2px 3px 10px #212121;
 }
 
-.textos2{
-    font-weight: bold !important;
+.textos2 {
+  font-weight: bold !important;
 }
 
-.btnCancelar{
-    margin-right: 20px !important;
+.btnCancelar {
+  margin-right: 20px !important;
 }
 
 .icon {
-    margin-left: 43%;
-    
+  margin-left: 43%;
 }
