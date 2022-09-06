@@ -1,6 +1,12 @@
 import React, { useState, useEffect, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import { Grid, Typography, Button, TextField } from "@material-ui/core";
+import {
+  Grid,
+  Typography,
+  Button,
+  TextField,
+  InputAdornment,
+} from "@material-ui/core";
 import { Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
@@ -10,6 +16,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import User from "../../models/User";
 import { cadastraUsuario } from "../../services/Service";
 import "./CadastraUsuario.css";
+import { AddAPhoto, Https, Person } from "@mui/icons-material";
 
 function CadastraUsuario() {
   const useStyles = makeStyles((theme) => ({
@@ -113,7 +120,6 @@ function CadastraUsuario() {
               variant="outlined"
               name="nome"
               margin="normal"
-              
               fullWidth
               required
             />
@@ -128,6 +134,13 @@ function CadastraUsuario() {
               type="email"
               fullWidth
               required
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Person className="icons" />
+                  </InputAdornment>
+                ),
+              }}
             />
             <TextField
               value={user.senha}
@@ -140,6 +153,13 @@ function CadastraUsuario() {
               type="password"
               fullWidth
               required
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Https className="icons" />
+                  </InputAdornment>
+                ),
+              }}
             />
             <TextField
               value={confirmarSenha}
@@ -154,6 +174,30 @@ function CadastraUsuario() {
               type="password"
               fullWidth
               required
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Https className="icons" />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <TextField
+              onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
+              value={user.foto}
+              id="foto"
+              label="Foto"
+              variant="outlined"
+              name="foto"
+              margin="normal"
+              fullWidth
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <AddAPhoto className="icons" />
+                  </InputAdornment>
+                ),
+              }}
             />
             <Box marginTop={2} textAlign="center">
               <Link to="/login" className="text-decorator-none">

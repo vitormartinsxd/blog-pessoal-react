@@ -62,9 +62,6 @@ function Footer() {
               >
                 <LinkedInIcon style={{ fontSize: 35, color: "white" }} />
               </a>
-
-              
-
             </Box>
           </Box>
           <Box style={{ backgroundColor: "#212121", height: "60px" }}>
