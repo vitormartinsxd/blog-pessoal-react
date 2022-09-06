@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
+import Modal from '@mui/material/Modal'
 import {Button,Box } from "@material-ui/core"
 import CloseIcon from '@material-ui/icons/Close';
 import './ModalPostagem.css';

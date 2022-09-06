@@ -31,6 +31,7 @@ function CadastroPost() {
         titulo: '',
         texto: '',
         tema: null
+       
     })
 
     useEffect(() => { 
