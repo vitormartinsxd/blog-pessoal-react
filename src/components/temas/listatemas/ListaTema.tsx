@@ -40,12 +40,12 @@ function ListaTema() {
     {
       temas.map(tema =>(
       <Box m={2} >
-        <Card variant="outlined">
+        <Card className='listPost' variant="outlined">
           <CardContent>
-            <Typography color="textSecondary" gutterBottom>
+            <Typography className='titleList' color="textSecondary" gutterBottom>
               Tema
             </Typography>
-            <Typography variant="h5" component="h2">
+            <Typography className='titleList' variant="h5" component="h2">
              {tema.descricao}
             </Typography>
           </CardContent>

@@ -17,7 +17,7 @@ function Footer() {
         alignItems="center"
       >
         <Grid alignItems="center" item xs={12}>
-          <Box style={{ backgroundColor: "#222222", height: "90px" }}>
+          <Box style={{ backgroundColor: "#222222", height: "80px" }}>
             <Box
               paddingTop={1}
               display="flex"
@@ -39,28 +39,28 @@ function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FacebookIcon style={{ fontSize: 35, color: "white" }} />
+                <FacebookIcon style={{ fontSize: 30, color: "white" }} />
               </a>
               <a
                 href="https://www.instagram.com/generationbrasil/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <InstagramIcon style={{ fontSize: 35, color: "white" }} />
+                <InstagramIcon style={{ fontSize: 30, color: "white" }} />
               </a>
               <a
                 href="https://github.com/vitormartinsxd"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <GitHubIcon style={{ fontSize: 35, color: "white" }} />
+                <GitHubIcon style={{ fontSize: 30, color: "white" }} />
               </a>
               <a
                 href="https://www.linkedin.com/school/generationbrasil/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <LinkedInIcon style={{ fontSize: 35, color: "white" }} />
+                <LinkedInIcon style={{ fontSize: 30, color: "white" }} />
               </a>
             </Box>
           </Box>
@@ -72,7 +72,7 @@ function Footer() {
                 gutterBottom
                 style={{ color: "white" }}
               >
-                <Copyright style={{ fontSize: 14, color: "white" }} /> 2020
+                <Copyright style={{ fontSize: 14, color: "white" }} /> 2022
                 Copyright:{" "}
               </Typography>
             </Box>

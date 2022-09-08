@@ -11,3 +11,11 @@
 .postagemAlt{
     min-height: 57vh;
 }
+
+.listPost {
+    background-color: #212121 !important;
+}
+
+.titleList{
+    color: white !important;
+}

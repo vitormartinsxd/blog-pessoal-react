@@ -1,0 +1,15 @@
+.btn02 {
+  background-color: gray;
+}
+
+.imagem5 {
+  background-image: url(https://cdn.pixabay.com/photo/2021/03/23/11/20/crow-6117223_960_720.jpg);
+  width: 100vh;
+  height: 100vh;
+  background-size: cover;
+  
+}
+
+.titleList{
+  color: white !important;
+}

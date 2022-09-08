@@ -11,6 +11,7 @@ import CadastroPost from "./components/postagens/cadastroPost/CadastroPost";
 import CadastroTema from "./components/temas/cadastroTema/CadastroTema";
 import DeletarPostagem from "./components/postagens/deletarPostagem/DeletarPostagem";
 import DeletarTema from "./components/temas/deletarTema/DeletarTema";
+import Contact from "./paginas/contact/Contact";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/cadastrausuario" element={<CadastraUsuario />} />
         <Route path="/temas" element={<ListaTema />} />
         <Route path="/posts" element={<ListaPostagem />} />
+        <Route path="/contato" element={<Contact/>} />
         <Route path="/formularioPostagem" element={<CadastroPost />} />
         <Route path="/formularioPostagem/:id" element={<CadastroPost />} />
         <Route path="/formularioTema" element={<CadastroTema />} />
