@@ -3,26 +3,25 @@ import { Typography, Grid, Button } from "@material-ui/core";
 import "./Home.css";
 import { Box } from "@mui/material";
 import TabPostagem from "../../components/postagens/tabpostagens/TabPostagem";
-import { useNavigate } from "react-router-dom";
-import useLocalStorage from "react-use-localstorage";
+import { Link, useNavigate } from "react-router-dom";
 import ModalPostagem from "../../components/postagens/modalPostagem/ModalPostagem";
+import { useSelector } from "react-redux";
+import { TokenState } from "../../store/tokens/tokensReducer";
 
 function Home() {
   let navigate = useNavigate();
-  const [token, setToken] = useLocalStorage('token');
-  
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
   useEffect(() => {
     if (token == "") {
-        alert("Você precisa estar logado")
-        navigate("/login")
-
+      alert("Você precisa estar logado");
+      navigate("/login");
     }
-}, [token])
+  }, [token]);
 
   return (
     <>
-    
-      
       <Grid
         className="caixa"
         container
@@ -31,8 +30,8 @@ function Home() {
         alignItems="center"
         style={{ backgroundColor: "#292929" }}
       >
-        <Grid  alignItems="center" item xs={6}>
-          <Box  paddingX={20}>
+        <Grid alignItems="center" item xs={6}>
+          <Box paddingX={20}>
             <Typography
               variant="h2"
               gutterBottom
@@ -59,16 +58,18 @@ function Home() {
           </Box>
           <Box display="flex" justifyContent="center">
             <Box marginRight={1}>
-              <ModalPostagem/>
+              <ModalPostagem />
             </Box>
-            <Button variant="outlined" className="botao2">
-              Ver Postagens
-            </Button>
+            <Link to="/posts" className="text-decorator-none">
+              <Button variant="outlined" className="botao">
+                Ver Postagens
+              </Button>
+            </Link>
           </Box>
         </Grid>
-        <Grid className="imagem3"  item xs={6}></Grid>
+        <Grid className="imagem3" item xs={6}></Grid>
         <Grid xs={12} className="postagens">
-          <TabPostagem/>
+          <TabPostagem />
         </Grid>
       </Grid>
     </>

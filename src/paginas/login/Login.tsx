@@ -11,11 +11,12 @@ import { Box } from "@mui/material";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
-import useLocalStorage from "react-use-localstorage";
 import { login } from "../../services/Service";
 import UserLogin from "../../models/UserLogin";
 import "./Login.css";
 import { Https, Person } from "@material-ui/icons";
+import { useDispatch } from "react-redux";
+import { addToken } from "../../store/tokens/actions";
 
 function Login() {
   const useStyles = makeStyles((theme) => ({
@@ -28,7 +29,8 @@ function Login() {
   const classes = useStyles();
 
   let navigate = useNavigate();
-  const [token, setToken] = useLocalStorage("token");
+  const dispatch = useDispatch();
+  const [token, setToken] = useState('');
   const [userLogin, setUserLogin] = useState<UserLogin>({
     id: 0,
     nome: "",
@@ -47,6 +49,7 @@ function Login() {
 
   useEffect(() => {
     if (token != "") {
+      dispatch(addToken(token));
       navigate("/home");
     }
   }, [token]);

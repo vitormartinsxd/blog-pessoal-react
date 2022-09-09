@@ -12,19 +12,27 @@ import {
   PostAdd,
 } from "@mui/icons-material";
 import { Home } from "@mui/icons-material";
-import useLocalStorage from "react-use-localstorage";
+import { useDispatch, useSelector } from "react-redux";
+import { TokenState } from "../../../store/tokens/tokensReducer";
+import { addToken } from "../../../store/tokens/actions";
 
 function Navbar() {
-  const [token, setToken] = useLocalStorage("token");
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
   let navigate = useNavigate();
+  const dispatch = useDispatch();
 
   function goLogout() {
-    setToken("");
+    dispatch(addToken(""));
     alert("Usuário deslogado");
     navigate("/login");
   }
-  return (
-    <>
+
+  var navbarComponent;
+
+  if (token != "") {
+    navbarComponent = 
       <AppBar position="static">
         <Toolbar variant="dense" style={{ background: "#222222" }}>
           <Box mx={1} className="cursor">
@@ -89,8 +97,9 @@ function Navbar() {
           </Box>
         </Toolbar>
       </AppBar>
-    </>
-  );
+    
+  }
+  return <>{navbarComponent}</>;
 }
 
 export default Navbar;
