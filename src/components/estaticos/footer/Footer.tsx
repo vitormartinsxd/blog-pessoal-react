@@ -7,10 +7,10 @@ import { Box } from "@mui/material";
 import "./Footer.css";
 import { Copyright } from "@mui/icons-material";
 import { useSelector } from "react-redux";
-import { TokenState } from "../../../store/tokens/tokensReducer";
+import { UserState } from "../../../store/tokens/UserReducer";
 
 function Footer() {
-  const token = useSelector<TokenState, TokenState["tokens"]>(
+  const token = useSelector<UserState, UserState["tokens"]>(
     (state) => state.tokens
   );
   

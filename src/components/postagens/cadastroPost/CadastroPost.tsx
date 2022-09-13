@@ -17,20 +17,37 @@ import Postagem from "../../../models/Postagem";
 import { busca, buscaId, post, put } from "../../../services/Service";
 import { Box } from "@mui/material";
 import { useSelector } from "react-redux";
-import { TokenState } from "../../../store/tokens/tokensReducer";
+import { UserState } from "../../../store/tokens/UserReducer";
+import { toast } from "react-toastify";
+import User from "../../../models/User";
 
 
 function CadastroPost() {
   let navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   const [temas, setTemas] = useState<Tema[]>([]);
-  const token = useSelector<TokenState, TokenState["tokens"]>(
+
+  const token = useSelector<UserState, UserState["tokens"]>(
     (state) => state.tokens
   );
 
+  // Pega o ID guardado no Store
+  const userId = useSelector<UserState, UserState["id"]>(
+    (state) => state.id
+);
+
   useEffect(() => {
     if (token == "") {
-      alert("Você precisa estar logado");
+      toast.error('Você precisa estar logado', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: "colored",
+        progress: undefined,
+    });
       navigate("/login");
     }
   }, [token]);
@@ -41,10 +58,19 @@ function CadastroPost() {
   });
   const [postagem, setPostagem] = useState<Postagem>({
     id: 0,
-    titulo: "",
-    texto: "",
+    titulo: '',
+    texto: '',
     tema: null,
-  });
+    usuario: null
+})
+
+const [user, setUser] = useState<User>({
+    id: +userId,    // Faz uma conversão de String para Number
+    nome: '',
+    usuario: '',
+    senha: '',
+    foto: ''
+})
 
   useEffect(() => {
     setPostagem({
@@ -98,12 +124,30 @@ function CadastroPost() {
           },
         });
 
-        alert("Postagem atualizado com sucesso");
+        toast.success('Postagem atualizada com sucesso!', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          theme: "colored",
+          progress: undefined,
+          });
 
         // CATCH: Caso tenha algum erro, pegue esse erro e mande uma msg para o usuário
       } catch (error) {
         console.log(`Error: ${error}`);
-        alert("Erro, por favor verifique a quantidade minima de caracteres");
+        toast.info('Verifique a quantidade de caracter.', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          theme: "colored",
+          progress: undefined,
+      });
       }
 
       // Se o ID for indefinido, tente Cadastrar
@@ -116,12 +160,29 @@ function CadastroPost() {
           },
         });
 
-        alert("Postagem cadastrado com sucesso");
-
+        toast.success('Postagem cadastrada com sucesso!', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          theme: "colored",
+          progress: undefined,
+          });
         // CATCH: Caso tenha algum erro, pegue esse erro e mande uma msg para o usuário
       } catch (error) {
         console.log(`Error: ${error}`);
-        alert("Erro, por favor verifique a quantidade minima de caracteres");
+        toast.error('Erro verifique a quantidade de caracteres.', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          theme: "colored",
+          progress: undefined,
+          });
       }
     }
     back();

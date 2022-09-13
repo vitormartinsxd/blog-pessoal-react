@@ -13,11 +13,12 @@ import {
 } from "@mui/icons-material";
 import { Home } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
-import { TokenState } from "../../../store/tokens/tokensReducer";
+import { UserState } from "../../../store/tokens/UserReducer";
 import { addToken } from "../../../store/tokens/actions";
+import { toast } from "react-toastify";
 
 function Navbar() {
-  const token = useSelector<TokenState, TokenState["tokens"]>(
+  const token = useSelector<UserState, UserState["tokens"]>(
     (state) => state.tokens
   );
   let navigate = useNavigate();
@@ -25,7 +26,17 @@ function Navbar() {
 
   function goLogout() {
     dispatch(addToken(""));
-    alert("Usuário deslogado");
+    toast.info('Usuário deslogado', {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      theme: "colored",
+      progress: undefined,
+  });
+  navigate('/login')
     navigate("/login");
   }
 

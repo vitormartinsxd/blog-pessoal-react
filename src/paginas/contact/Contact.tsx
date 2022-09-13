@@ -3,13 +3,14 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import "./Contact.css";
 import { Box } from "@mui/material";
-import { Button, Grid, TextareaAutosize } from "@material-ui/core";
-import useLocalStorage from "react-use-localstorage";
+import { Button, Grid} from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { TokenState } from "../../store/tokens/tokensReducer";
+import { UserState } from "../../store/tokens/UserReducer";
+import { toast } from "react-toastify";
 
 function Contact() {
+
   const useStyles = makeStyles((theme: Theme) =>
     createStyles({
       root: {
@@ -21,19 +22,39 @@ function Contact() {
     })
   );
   let navigate = useNavigate();
-  const token = useSelector<TokenState, TokenState["tokens"]>(
+  const token = useSelector<UserState, UserState["tokens"]>(
     (state) => state.tokens
   );
 
   useEffect(() => {
     if (token == "") {
-      alert("Você precisa estar logado");
+      toast.error('Você precisa estar logado', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: "colored",
+        progress: undefined,
+    });
       navigate("/login");
     }
   }, [token]);
 
   function enviar() {
-    alert("Formulario enviado com sucesso.");
+    toast.success('Formulario enviado com sucesso!', {
+      position: "bottom-left",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      theme: "colored",
+      progress: undefined,
+      });
+
+      navigate('/home')
   }
 
   return (

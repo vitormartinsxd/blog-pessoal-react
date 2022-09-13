@@ -16,7 +16,8 @@ import UserLogin from "../../models/UserLogin";
 import "./Login.css";
 import { Https, Person } from "@material-ui/icons";
 import { useDispatch } from "react-redux";
-import { addToken } from "../../store/tokens/actions";
+import { addToken, addId } from "../../store/tokens/actions";
+import { toast } from "react-toastify";
 
 function Login() {
   const useStyles = makeStyles((theme) => ({
@@ -29,40 +30,90 @@ function Login() {
   const classes = useStyles();
 
   let navigate = useNavigate();
-  const dispatch = useDispatch();
-  const [token, setToken] = useState('');
+  
+  const dispatch = useDispatch()
+
+  const [token, setToken] = useState('')
+
   const [userLogin, setUserLogin] = useState<UserLogin>({
-    id: 0,
-    nome: "",
-    usuario: "",
-    senha: "",
-    foto: "",
-    token: "",
-  });
+      id: 0,
+      nome: "",
+      usuario: "",
+      senha: "",
+      foto: "",
+      token: ""
+  })
+
+  // Crie mais um State para pegar os dados retornados a API
+  const [respUserLogin, setRespUserLogin] = useState<UserLogin>({
+      id: 0,
+      nome: '',
+      usuario: '',
+      senha: '',
+      token: '',
+      foto: ""
+  })
+
+  useEffect(() => {
+      if (token !== "") {
+          dispatch(addToken(token))
+          navigate('/home')
+      }
+  }, [token])
 
   function updatedModel(e: ChangeEvent<HTMLInputElement>) {
-    setUserLogin({
-      ...userLogin,
-      [e.target.name]: e.target.value,
-    });
+      setUserLogin({
+          ...userLogin,
+          [e.target.name]: e.target.value
+      })
   }
 
   useEffect(() => {
-    if (token != "") {
-      dispatch(addToken(token));
-      navigate("/home");
+    if (respUserLogin.token !== "") {
+
+        // Verifica os dados pelo console (Opcional)
+        console.log("Token: " + respUserLogin.token)
+        console.log("ID: " + respUserLogin.id)
+
+        // Guarda as informações dentro do Redux (Store)
+        dispatch(addToken(respUserLogin.token))
+        dispatch(addId(respUserLogin.id.toString()))    // Faz uma conversão de Number para String
+        navigate('/home')
     }
-  }, [token]);
+}, [respUserLogin.token])
 
   async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
-    e.preventDefault();
-    try {
-      await login(`/usuarios/logar`, userLogin, setToken);
+      e.preventDefault()
 
-      alert("Usuário logado com sucesso!");
-    } catch (error) {
-      alert("Dados do usuário inconsistentes. Erro ao logar!");
-    }
+      try {
+
+          /* Se atente para a Rota de Logar, e também substitua o método
+          setToken por setRespUserLogin */
+
+          await login(`/usuarios/logar`, userLogin, setRespUserLogin)
+          toast.success('Usuário logado com sucesso!', {
+            position: "bottom-left",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            theme: "colored",
+            progress: undefined,
+            });
+
+      } catch (error) {
+        toast.error('Dados incorretos, digite novamente' , {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          theme: "colored",
+          progress: undefined,
+      });
+      }
   }
 
   return (
