@@ -47,12 +47,7 @@ function Navbar() {
       <AppBar position="static">
         <Toolbar variant="dense" style={{ background: "#222222" }}>
           <Box mx={1} className="cursor">
-            <img
-              src="https://img2.gratispng.com/20180301/oze/kisspng-logo-gratis-download-color-thanksgiving-badge-5a97df2c16c818.4278230415199025080933.jpg"
-              alt=""
-              width="60px"
-              height="50px"
-            />
+           
           </Box>
           <Box display="flex" justifyContent="start">
             <Link to="/home" className="text-decorator-none">

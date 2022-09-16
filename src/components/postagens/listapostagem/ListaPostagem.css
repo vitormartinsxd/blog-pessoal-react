@@ -4,7 +4,7 @@
 
 .card {
     background-color: #212121 !important;
-    color: white !important;
+    color: black !important;
     
 }
 
@@ -13,9 +13,18 @@
 }
 
 .listPost {
-    background-color: #212121 !important;
+    background-color: gray !important;
 }
 
 .titleList{
-    color: white !important;
+    color: black !important;
+}
+
+.Post {
+    margin-left: 5rem;
+
+}
+
+.Post02 {
+    margin-left: 2rem;
 }

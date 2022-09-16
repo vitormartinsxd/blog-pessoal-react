@@ -8,6 +8,8 @@ import ModalPostagem from "../../components/postagens/modalPostagem/ModalPostage
 import { useSelector } from "react-redux";
 import { UserState } from "../../store/tokens/UserReducer";
 import { toast } from "react-toastify";
+import Carrossel from "../../components/carrossel/Carrosel";
+import ModalTema from "../../components/temas/modalTema/ModalTema";
 
 function Home() {
   let navigate = useNavigate();
@@ -70,14 +72,14 @@ function Home() {
             <Box marginRight={1}>
               <ModalPostagem />
             </Box>
-            <Link to="/posts" className="text-decorator-none">
-              <Button variant="outlined" className="botao">
-                Ver Postagens
-              </Button>
-            </Link>
+            <Box marginRight={1}>
+              <ModalTema/>
+            </Box>
           </Box>
         </Grid>
-        <Grid className="imagem3" item xs={6}></Grid>
+        <Grid  item xs={6}>
+        <Carrossel/>
+        </Grid>
         <Grid xs={12} className="postagens">
           <TabPostagem />
         </Grid>

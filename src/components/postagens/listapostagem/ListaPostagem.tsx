@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import { UserState } from '../../../store/tokens/UserReducer';
 import { toast } from 'react-toastify';
+import Posts from '../posts/Posts';
 
 function ListaPostagem() {
   const [posts, setPosts] = useState<Postagem[]>([])
@@ -49,48 +50,9 @@ function ListaPostagem() {
 
   return (
     <>
-      {
-        posts.map(post => (
-
-          <Box m={2} >
-            <Card className="listPost" variant="outlined">
-              <CardContent>
-                <Typography className='titleList' color="textSecondary" gutterBottom>
-                  Postagens
-                </Typography>
-                <Typography className='titleList' variant="h5" component="h2">
-                  {post.titulo}
-                </Typography>
-                <Typography className='titleList' variant="body2" component="p">
-                  {post.texto}
-                </Typography>
-                <Typography className='titleList' variant="body2" component="p">
-                  {post.tema?.descricao}
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Box display="flex" justifyContent="center" mb={1.5}>
-
-                  <Link to={`/formularioPostagem/${post.id}`} className="text-decorator-none" >
-                    <Box mx={1}>
-                      <Button variant="contained" className="marginLeft" size='small' color="primary" >
-                        atualizar
-                      </Button>
-                    </Box>
-                  </Link>
-                  <Link to={`/deletarPostagem/${post.id}`} className="text-decorator-none">
-                    <Box mx={1}>
-                      <Button variant="contained" size='small' color="secondary">
-                        deletar
-                      </Button>
-                    </Box>
-                  </Link>
-                </Box>
-              </CardActions>
-            </Card>
-          </Box>
-        ))
-      }
+      {posts.map(post => (
+        <Posts post={post}/> 
+      ))}
     </>
   )
 }
